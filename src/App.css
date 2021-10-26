@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,18 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
+
+
+
+/* ------------------------------------------------------------ */
+
+.App {    
+  text-align: center;  
+  font-family: 'Roboto', sans-serif;  
+}    
+.navheader{    
+  margin-top: 10px;    
+  color :black !important;    
+  background-color: #b3beca!important    
+} 
