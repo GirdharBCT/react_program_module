@@ -25,7 +25,7 @@ export default class providerlist extends Component {
       
     componentDidMount(){  
       //debugger;  
-      axios.get('https://localhost:44330/providers/func')  
+      axios.get('https://localhost:44368/providers/func')  
         .then(response => {  
           this.setState({ business: response.data });  
         //   //debugger;  

@@ -14,7 +14,7 @@ class Table extends Component {
     }  
       
     Deleteprogram= () =>{  
-     axios.delete('https://localhost:44396/programs/'+this.props.obj.id)  
+     axios.delete('https://localhost:44368/programs/'+this.props.obj.id)  
     .then(json => {  
       
       console.log("Status of delete :",json.status);

@@ -14,7 +14,7 @@ class Table extends Component {
       
     Deleteprovider= () =>{  
       console.log("id=",this.props.obj.id);
-     axios.delete('https://localhost:44396/providers/'+this.props.obj.id)  
+     axios.delete('https://localhost:44368/providers/'+this.props.obj.id)  
     .then(json => {  
     if(json.status===200){  
     alert('Record deleted successfully!!'); 

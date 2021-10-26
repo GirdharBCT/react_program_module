@@ -15,7 +15,7 @@ hospitalId:'' //,
 }  
 }   
 Addprovider=()=>{  
-  axios.post('https://localhost:44330/providers', {firstName:this.state.firstName,middleName:this.state.middleName,lastName:this.state.lastName,hospitalId:parseInt(this.state.hospitalId)})  
+  axios.post('https://localhost:44368/providers', {firstName:this.state.firstName,middleName:this.state.middleName,lastName:this.state.lastName,hospitalId:parseInt(this.state.hospitalId)})  
 .then(json => {  
   console.log(json.status);  
 if(json.status===201){  
