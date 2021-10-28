@@ -1,19 +1,18 @@
 import React from 'react';  
 import axios from 'axios';  
 import '../Program/Addprogram.css'  
+import baseUrl from '../apiUrl.js'
 import { Container, Col, Form, Row, FormGroup, Label, Input, Button } from 'reactstrap';  
 class Addprogram extends React.Component{  
 constructor(props){  
 super(props)  
 this.state = {  
 Name:'',  
-Description:'' //,  
-// CreatedOn:'',  
-// ModifiedOn:''  
+Description:''   
 }  
 }   
 Addprogram=()=>{  
-  axios.post('https://localhost:44368/programs', {Name:this.state.Name,Description:this.state.Description})  
+  axios.post(baseUrl.baseUrl+'programs', {Name:this.state.Name,Description:this.state.Description})  
 .then(json => {  
   console.log("Status of created :",json.status);
 if(json.status===201){    
@@ -30,8 +29,6 @@ this.props.history.push('/Programlist')
    
 CancelButton=()=>{
   alert('Canceled!');  
-  // this.props.history.push('/')  
-  //   console.log("after /");
     this.props.history.push('/Programlist')
 }
 

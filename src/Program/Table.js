@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link,Route, withRouter } from 'react-router-dom';  
 // import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'; 
 // import Programlist from './Program/Programlist';  
-
+import baseUrl from '../apiUrl.js'
 
 import '@progress/kendo-theme-default/dist/all.css';
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
@@ -14,7 +14,7 @@ class Table extends Component {
     }  
       
     Deleteprogram= () =>{  
-     axios.delete('https://localhost:44368/programs/'+this.props.obj.id)  
+     axios.delete(baseUrl.baseUrl+'programs',{ params:{Id:this.props.obj.Id}})  
     .then(json => {  
       
       console.log("Status of delete :",json.status);
@@ -32,13 +32,13 @@ class Table extends Component {
     return (  
         <tr>  
           <td>  
-            {this.props.obj.id} 
+            {this.props.obj.Id} 
           </td> 
           <td>  
-            {this.props.obj.name} 
+            {this.props.obj.Name} 
           </td>  
           <td>  
-            {this.props.obj.description}  
+            {this.props.obj.Description}  
           </td>  
           {/* <td>  
             {this.props.obj.Class}  

@@ -1,31 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-//====================================================================================================================
-
 import React from 'react';  
 import Addprogram from './Program/Addprogram';  
 import Programlist from './Program/Programlist';  
@@ -38,9 +10,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactBootstrap, {Navbar,Container,Nav,Jumbotron, Button, Col, Grid, Panel, FormGroup} from 'react-bootstrap'
 
 
+
 import '@progress/kendo-theme-default/dist/all.css';
 import { Calendar } from '@progress/kendo-react-dateinputs'
 
+import Cookies from 'js-cookie';
+console.log("cookie=>",Cookies.get());
 function App() {  
   return (  
     <Router>  

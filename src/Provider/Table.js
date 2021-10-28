@@ -4,7 +4,7 @@ import { Link,Route, withRouter } from 'react-router-dom';
 import Providerlist from './Providerlist'; 
 import '@progress/kendo-theme-default/dist/all.css';
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
-
+import baseUrl from '../apiUrl.js'
 var selectedTab;
 
 class Table extends Component {  
@@ -14,7 +14,7 @@ class Table extends Component {
       
     Deleteprovider= () =>{  
       console.log("id=",this.props.obj.id);
-     axios.delete('https://localhost:44368/providers/'+this.props.obj.id)  
+     axios.delete(baseUrl.baseUrl+'providers',{ params:{Id:this.props.obj.Id}})  
     .then(json => {  
     if(json.status===200){  
     alert('Record deleted successfully!!'); 
@@ -33,14 +33,14 @@ class Table extends Component {
     return (  
         <tr>  
           <td>  
-            {this.props.obj.id} 
+            {this.props.obj.Id} 
           </td> 
           <td>  
             {/* {this.props.obj.firstName+" "+this.props.obj.middleName+" "+this.props.obj.lastName}  */}
-            {this.props.obj.name}
+            {this.props.obj.Name}
           </td>  
           <td>  
-            {this.props.obj.hospitalId}  
+            {this.props.obj.HospitalId}  
           </td>  
           {/* <td>  
             {this.props.obj.Class}  

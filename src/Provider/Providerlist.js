@@ -3,44 +3,81 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';  
 import Table from './Table';  
 import '../Provider/Addprovider.css'
-  
+import baseUrl from '../apiUrl.js'
 import '@progress/kendo-theme-default/dist/all.css';
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
+
+import Cookies from 'js-cookie';
+console.log("cookie=>",Cookies.get());
+// import { useCookies } from 'react-cookie';
+// const [cookies, setCookie] = useCookies(['name']); // getting react hooks
+// cookie2.set('access_token', 'content of cookie');
+// cookie = cookies.get('access_token');
+// console.log(cookie)
 
 // const [data,setData]=useState(null)
 // function getData(val) {
 //   setData(val.target.value)
 // }
+
+// axios.defaults.baseURL="https://localhost:44335/";
 export default class providerlist extends Component {  
   
   
   constructor(props) {  
       super(props);  
-      this.state = {business: []};  
+      this.state = {
+        business: [],
+        searchItem:''
+      };  
     }  
 
     state = {
         users: []
       }
       
+      
     componentDidMount(){  
+      console.log("cdm cookie=>",Cookies.get());
       //debugger;  
-      axios.get('https://localhost:44368/providers/func')  
+      console.log("this.state.searchItem",this.state.searchItem);
+      console.log("baseUrl=>",baseUrl.baseUrl);
+      axios.get(baseUrl.baseUrl+'providers/func',{ params:{Search:this.state.searchItem}}/*,{credentials: "same-origin"}*/)  
         .then(response => {  
           this.setState({ business: response.data });  
         //   //debugger;  
-    //     .then(response => response.data)
-    // .then((data) => {
-    //   this.setState({ users: data })
-    //   console.log("user wala ",this.state.users.pop())
-          
-  
         })  
         .catch(function (error) {  
           console.log(error);  
         })  
     }  
+
+    searchList=()=>{  
+      console.log("cdm cookie=>",Cookies.get());
+      //debugger;  
+      axios.get('https://localhost:44368/providers/func',{ params:{Search:this.state.searchItem}}/*,{credentials: "same-origin"}*/)  
+        .then(response => {  
+          this.setState({ business: response.data });  
+        //   //debugger;  
+        })  
+        .catch(function (error) {  
+          console.log(error);  
+        })  
+    } 
       
+    reload = () => 
+    {
+        //RELOAD COMPONENT
+        this.componentDidMount();
+    };
+
+    handleChange= (e)=> {  
+      console.log("item ",e.target.name,e.target.value);
+    this.setState({[e.target.name]:e.target.value}); 
+    // this.reload() 
+    } 
+
+
     tabRow(){  
         console.log("Data ",this.state.business);
       return this.state.business.map(function(object, i){  
@@ -54,27 +91,24 @@ export default class providerlist extends Component {
  
     render() {  
       return (  
-          
-        // <Grid
-        // data={this.tabRow()
-        //              }>
 
-        //     </Grid>
-            
-        
         <div className="list">  
-          {/* <div className="search">
-          <input type="text" name="search" onChange={getData} />
-        <input type="submit"  value="Search" name="submit" />
-          </div> */}
-          <h4>Provider List</h4>  
+          <div className="search">
+          <input type="text" name="searchItem" onChange={this.handleChange} defaultValue={this.state.searchItem} />
+          <button type="button" onClick={this.reload} className="btn btn-dark mb-1">Search</button> 
+          </div>
+          <br/>
+          
+          <p className="add-btn">
+          <a class="btn btn-success" href="/Addprovider">Add provider</a> 
+          </p>
+
           <table className="table table-striped" style={{ marginTop: 10 }}>  
             <thead>  
               <tr>  
                 <th>Id</th>  
                 <th>Name</th>  
-                <th>Description</th>  
-                {/* <th>Address</th>   */}
+                <th>Hospital-Id</th>
                 <th colSpan="4">Action</th>  
               </tr>  
             </thead>  
@@ -85,7 +119,7 @@ export default class providerlist extends Component {
              
             </tbody>  
           </table> 
-          <a class="btn btn-success" href="/Addprovider">Add provider</a> 
+          {/* <a class="btn btn-success" href="/Addprovider">Add provider</a>  */}
         </div>  
         
       );  

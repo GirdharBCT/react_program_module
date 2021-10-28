@@ -1,6 +1,7 @@
 import React from 'react';  
 import axios from 'axios';  
 import '../Provider/Addprovider.css'  
+import baseUrl from '../apiUrl.js'
 import { Container, Col, Form, Row, FormGroup, Label, Input, Button } from 'reactstrap';  
 class Addprovider extends React.Component{  
 constructor(props){  
@@ -9,13 +10,11 @@ this.state = {
 firstName:'',  
 middleName:'', 
 lastName:'', 
-hospitalId:'' //,  
-// CreatedOn:'',  
-// ModifiedOn:''  
+hospitalId:''  
 }  
 }   
 Addprovider=()=>{  
-  axios.post('https://localhost:44368/providers', {firstName:this.state.firstName,middleName:this.state.middleName,lastName:this.state.lastName,hospitalId:parseInt(this.state.hospitalId)})  
+  axios.post(baseUrl.baseUrl+'providers', {firstName:this.state.firstName,middleName:this.state.middleName,lastName:this.state.lastName,hospitalId:parseInt(this.state.hospitalId)})  
 .then(json => {  
   console.log(json.status);  
 if(json.status===201){  
@@ -34,9 +33,7 @@ this.props.history.push('/Providerlist')
 }  
 
 CancelButton=()=>{
-  alert('Canceled!');  
-  // this.props.history.push('/')  
-  //   console.log("after /");
+  alert('Canceled!');
     this.props.history.push('/Providerlist')
 }
 

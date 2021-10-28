@@ -13,3 +13,15 @@
   transform: translate3d(-50%,-50%, 0);
   position: absolute;
 } */
+
+/* .list
+{
+  display: flex;
+} */
+.search
+{
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+  align-items: center;
+}
