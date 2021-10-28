@@ -75,7 +75,7 @@ export default class Programlist extends Component {
         <div className="list">  
          <div className="search">
           <input type="text" name="searchItem" onChange={this.handleChange} defaultValue={this.state.searchItem} />
-          <button type="button" onClick={this.reload} className="btn btn-success">Search</button> 
+          <button type="button" onClick={this.reload} className="btn btn-dark mb-1">Search</button> 
           </div>
           
           <br/>
