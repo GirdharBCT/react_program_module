@@ -25,3 +25,13 @@
   column-gap: 20px;
   align-items: center;
 }
+
+.table{
+
+}
+ td {
+  width:80px;
+  text-align:center;
+  /* padding:2px */
+  
+  }

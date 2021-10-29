@@ -39,9 +39,9 @@ class Table extends Component {
             {/* {this.props.obj.firstName+" "+this.props.obj.middleName+" "+this.props.obj.lastName}  */}
             {this.props.obj.Name}
           </td>  
-          <td>  
+          {/* <td>  
             {this.props.obj.HospitalId}  
-          </td>  
+          </td>   */}
           {/* <td>  
             {this.props.obj.Class}  
           </td>  

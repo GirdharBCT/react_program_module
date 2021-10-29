@@ -108,7 +108,7 @@ export default class providerlist extends Component {
               <tr>  
                 <th>Id</th>  
                 <th>Name</th>  
-                <th>Hospital-Id</th>
+                {/* <th>Hospital-Id</th> */}
                 <th colSpan="4">Action</th>  
               </tr>  
             </thead>  
