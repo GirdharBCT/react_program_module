@@ -1,4 +1,4 @@
-var baseUrl="http://trainingapi-env.eba-fspcp5r4.us-east-1.elasticbeanstalk.com/";
+var baseUrl="https://cors-everywhere.herokuapp.com/http://trainingapi-env.eba-fspcp5r4.us-east-1.elasticbeanstalk.com/";
 // import axios from 'axios'; 
 
 // function apiUrl() {
