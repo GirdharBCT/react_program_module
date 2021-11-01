@@ -17,7 +17,7 @@ class Table extends Component {
      axios.delete(baseUrl.baseUrl+'providers',{ params:{Id:this.props.obj.Id}})  
     .then(json => {  
     if(json.status===200){  
-    alert('Record deleted successfully!!'); 
+    // alert('Record deleted successfully!!'); 
     console.log("history",this.props.history);
     console.log("history.push wala ",this.props.history.push('/providerlist'));
     this.props.history.push('/')  

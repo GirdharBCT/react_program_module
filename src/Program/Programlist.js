@@ -84,6 +84,13 @@ export default class Programlist extends Component {
           <a class="btn btn-success" href="/AddProgram">Add Program</a> 
           </p>
 
+          {(()=>{
+            if(this.state.business.length==0){
+              return (<h4>No Records Found.</h4>)
+            }
+            else{
+              return (
+
           <table className="table table-striped" style={{ marginTop: 10 }}>  
             <thead>  
               <tr>  
@@ -101,6 +108,12 @@ export default class Programlist extends Component {
              
             </tbody>  
           </table> 
+
+)
+}
+})()
+}
+
           {/* <a class="btn btn-success" href="/AddProgram">Add Program</a>  */}
         </div>  
         

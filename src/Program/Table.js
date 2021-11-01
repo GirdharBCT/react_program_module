@@ -20,7 +20,7 @@ class Table extends Component {
       console.log("Status of delete :",json.status);
     if(json.status===200){ 
 
-    alert('Record deleted successfully!!'); 
+    // alert('Record deleted successfully!!'); 
     this.props.history.push('/')
     this.props.history.push('/programlist')  
     

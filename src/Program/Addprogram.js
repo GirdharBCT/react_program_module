@@ -16,7 +16,7 @@ Addprogram=()=>{
 .then(json => {  
   console.log("Status of created :",json.status);
 if(json.status===201){    
-  alert("Data Save Successfully");  
+  // alert("Data Save Successfully");  
 this.props.history.push('/Programlist')  
 }  
 else{  
@@ -28,7 +28,7 @@ this.props.history.push('/Programlist')
 }  
    
 CancelButton=()=>{
-  alert('Canceled!');  
+  // alert('Canceled!');  
     this.props.history.push('/Programlist')
 }
 
@@ -40,19 +40,28 @@ render() {
 return (  
    <Container className="App">  
     <h4 className="PageHeading">Enter Program Informations</h4>  
-    <Form className="form">  
+    <Form className="form"  validate={values => {
+        const errors = {};
+        if (!values.Name && values.Description) {
+          errors.firstName = "Required";
+        }
+        
+        return errors;
+      }}>  
+      {/* <div>{}</div> */}
+      <br/>
       <Col>  
         <FormGroup row>  
           <Label for="name" sm={2}>Name</Label>  
           <Col sm={10}>  
-            <Input type="text" name="Name" onChange={this.handleChange} value={this.state.Name} placeholder="Enter Name" />  
+            <Input type="text" required name="Name" onChange={this.handleChange} value={this.state.Name} placeholder="Enter Name" />  
           </Col>  
         </FormGroup>  
-
+        <br/>
         <FormGroup row>  
           <Label for="address" sm={2}>Description</Label>  
           <Col sm={10}>  
-            <Input type="text" name="Description" onChange={this.handleChange} value={this.state.Description} placeholder="Enter Description" />  
+            <Input type="text" required name="Description" onChange={this.handleChange} value={this.state.Description} placeholder="Enter Description" />  
           </Col>  
         </FormGroup>  
 
@@ -71,7 +80,7 @@ return (
         </FormGroup>   */}
 
       </Col>  
-
+      <br/>
       <Col>  
         <FormGroup row>  
           <Col sm={5}>  

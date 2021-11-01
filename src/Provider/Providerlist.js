@@ -52,18 +52,18 @@ export default class providerlist extends Component {
         })  
     }  
 
-    searchList=()=>{  
-      console.log("cdm cookie=>",Cookies.get());
-      //debugger;  
-      axios.get('https://localhost:44368/providers/func',{ params:{Search:this.state.searchItem}}/*,{credentials: "same-origin"}*/)  
-        .then(response => {  
-          this.setState({ business: response.data });  
-        //   //debugger;  
-        })  
-        .catch(function (error) {  
-          console.log(error);  
-        })  
-    } 
+    // searchList=()=>{  
+    //   console.log("cdm cookie=>",Cookies.get());
+    //   //debugger;  
+    //   axios.get('https://localhost:44368/providers/func',{ params:{Search:this.state.searchItem}}/*,{credentials: "same-origin"}*/)  
+    //     .then(response => {  
+    //       this.setState({ business: response.data });  
+    //     //   //debugger;  
+    //     })  
+    //     .catch(function (error) {  
+    //       console.log(error);  
+    //     })  
+    // } 
       
     reload = () => 
     {
@@ -80,6 +80,7 @@ export default class providerlist extends Component {
 
     tabRow(){  
         console.log("Data ",this.state.business);
+        console.log("length",this.state.business.length);
       return this.state.business.map(function(object, i){  
           console.log(<Table objjj={object} key={i} />);
           console.log("test");
@@ -87,6 +88,7 @@ export default class providerlist extends Component {
       });  
     }  
 
+   
     
  
     render() {  
@@ -97,12 +99,20 @@ export default class providerlist extends Component {
           <input type="text" name="searchItem" onChange={this.handleChange} defaultValue={this.state.searchItem} />
           <button type="button" onClick={this.reload} className="btn btn-dark mb-1">Search</button> 
           </div>
+         
           <br/>
           
           <p className="add-btn">
           <a class="btn btn-success" href="/Addprovider">Add provider</a> 
           </p>
 
+
+          {(()=>{
+            if(this.state.business.length==0){
+              return (<h4>No Records Found</h4>)
+            }
+            else{
+              return (
           <table className="table table-striped" style={{ marginTop: 10 }}>  
             <thead>  
               <tr>  
@@ -119,6 +129,10 @@ export default class providerlist extends Component {
              
             </tbody>  
           </table> 
+          )
+        }
+      })()
+      }
           {/* <a class="btn btn-success" href="/Addprovider">Add provider</a>  */}
         </div>  
         

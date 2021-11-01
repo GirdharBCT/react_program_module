@@ -19,7 +19,7 @@ Addprovider=()=>{
   console.log(json.status);  
 if(json.status===201){  
   
-  alert("Data Save Successfully");  
+  // alert("Data Save Successfully");  
   console.log("history",this.props.history);
   console.log(this.props.history.push('/providerlist'));
 this.props.history.push('/Providerlist')  
@@ -33,7 +33,7 @@ this.props.history.push('/Providerlist')
 }  
 
 CancelButton=()=>{
-  alert('Canceled!');
+  // alert('Canceled!');
     this.props.history.push('/Providerlist')
 }
 
@@ -47,34 +47,35 @@ this.setState({[e.target.name]:e.target.value});
 render() {  
 return (  
    <Container className="App">  
-    <h4 className="PageHeading">Enter provider Informations</h4>  
+    <h4 className="PageHeading">Enter Provider Informations</h4>  
     <Form className="form">  
+    <br/>
       <Col>  
         <FormGroup row>  
           <Label for="name" sm={2}>First Name</Label>  
           <Col sm={10}>  
-            <Input type="text" name="firstName" onChange={this.handleChange} defaultValue={this.state.firstName} placeholder="Enter First Name" />  
+            <Input type="text" required name="firstName" onChange={this.handleChange} defaultValue={this.state.firstName} placeholder="Enter First Name" />  
           </Col>  
         </FormGroup>  
-
+<br/>
         <FormGroup row>  
           <Label for="name" sm={2}>Middle Name</Label>  
           <Col sm={10}>  
-            <Input type="text" name="middleName" onChange={this.handleChange} defaultValue={this.state.middleName} placeholder="Enter Middle Name" />  
+            <Input type="text" required name="middleName" onChange={this.handleChange} defaultValue={this.state.middleName} placeholder="Enter Middle Name" />  
           </Col>  
         </FormGroup> 
-
+        <br/>
         <FormGroup row>  
           <Label for="name" sm={2}>Last Name</Label>  
           <Col sm={10}>  
-            <Input type="text" name="lastName" onChange={this.handleChange} defaultValue={this.state.lastName} placeholder="Enter Last Name" />  
+            <Input type="text" required name="lastName" onChange={this.handleChange} defaultValue={this.state.lastName} placeholder="Enter Last Name" />  
           </Col>  
         </FormGroup> 
-
+        <br/>
         <FormGroup row>  
           <Label for="address" sm={2}>hospitalId</Label>  
           <Col sm={10}>  
-            <Input type="int" name="hospitalId" onChange={this.handleChange} defaultValue={this.state.hospitalId} placeholder="Enter hospitalId" />  
+            <Input type="int" required name="hospitalId" onChange={this.handleChange} defaultValue={this.state.hospitalId} placeholder="Enter hospitalId" />  
           </Col>  
         </FormGroup>  
 
@@ -93,7 +94,7 @@ return (
         </FormGroup>   */}
 
       </Col>  
-
+      <br/>
       <Col>  
         <FormGroup row>  
           <Col sm={5}>  
