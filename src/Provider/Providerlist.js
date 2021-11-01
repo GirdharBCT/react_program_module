@@ -109,7 +109,7 @@ export default class providerlist extends Component {
 
           {(()=>{
             if(this.state.business.length==0){
-              return (<h4>No Records Found</h4>)
+              return (<div style={{align:"center"}}>*No Records Found.</div>)
             }
             else{
               return (
