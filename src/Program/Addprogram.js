@@ -8,7 +8,8 @@ constructor(props){
 super(props)  
 this.state = {  
 Name:'',  
-Description:''   
+Description:'' ,
+errors:{}  
 }  
 }   
 Addprogram=()=>{  
@@ -35,33 +36,48 @@ CancelButton=()=>{
 handleChange= (e)=> {  
 this.setState({[e.target.name]:e.target.value});  
 }  
+
+checkValidation=(e)=>{
+  let errors = {};
+  let formIsValid = true;
+  if(this.state.Name=="")
+  {
+    errors["Name"]="The Name Field is Required";
+    formIsValid = false;
+  }
+  if(this.state.Description=="")
+  {
+    errors["Description"]="The Description Field is Required";
+    formIsValid = false;
+  }
+  this.setState({ errors: errors });
+  e.preventDefault()
+  if(formIsValid){
+    return this.Addprogram()}
+
+}
    
 render() {  
 return (  
    <Container className="App">  
-    <h4 className="PageHeading">Enter Program Informations</h4>  
-    <Form className="form"  validate={values => {
-        const errors = {};
-        if (!values.Name && values.Description) {
-          errors.firstName = "Required";
-        }
-        
-        return errors;
-      }}>  
+    <h4 className="PageHeading">Add Program</h4>  
+    <Form className="form"  >  
       {/* <div>{}</div> */}
       <br/>
       <Col>  
         <FormGroup row>  
           <Label for="name" sm={2}>Name</Label>  
           <Col sm={10}>  
-            <Input type="text" required name="Name" onChange={this.handleChange} value={this.state.Name} placeholder="Enter Name" />  
+            <Input id="inputField" type="text"  name="Name" onChange={this.handleChange} value={this.state.Name} placeholder="Enter Name" />  
+            <span style={{ color: "red",float:"left",fontSize:"15px" }}>{this.state.errors["Name"]}</span>
           </Col>  
         </FormGroup>  
         <br/>
         <FormGroup row>  
           <Label for="address" sm={2}>Description</Label>  
           <Col sm={10}>  
-            <Input type="text" required name="Description" onChange={this.handleChange} value={this.state.Description} placeholder="Enter Description" />  
+            <Input id="inputField" type="text"  name="Description" onChange={this.handleChange} value={this.state.Description} placeholder="Enter Description" />
+            <span style={{ color: "red",float:"left",fontSize:"15px" }}>{this.state.errors["Description"]}</span>  
           </Col>  
         </FormGroup>  
 
@@ -82,17 +98,15 @@ return (
       </Col>  
       <br/>
       <Col>  
-        <FormGroup row>  
-          <Col sm={5}>  
-          </Col>  
-          <Col sm={1}>  
-          <button type="button" onClick={this.Addprogram} className="btn btn-success">Submit</button>  
+        <FormGroup row id="btns">  
+          
+          <Col sm={1} style={{marginRight:"1.5rem"}}>  
+          <button id="btn_bg" type="submit" onClick={this.checkValidation} className="btn btn-primary">Create</button>  
           </Col>  
           <Col sm={1}>  
             <Button color="danger" onClick={this.CancelButton} >Cancel</Button>
           </Col>  
-          <Col sm={5}>  
-          </Col>  
+          
         </FormGroup>  
       </Col>  
 

@@ -9,6 +9,8 @@ body{
 
   background-color: #f2f8f9;
   font-family:"Roboto", sans-serif;
+  /* overflow: hidden; */
+  /* overflow-y: scroll; */
 
 }
 /* .list
@@ -94,7 +96,7 @@ td{
   .add{
     /* text-align:"end";  */
     float:right; 
-    padding-right: 65px;
+    padding-right: 60px;
     height: 10px;
     /* margin-bottom:25px; */
 
@@ -122,4 +124,26 @@ input[type="search"]{
   text-align: center;
   left: 50%;
   margin-top: 10%;
+}
+
+/* .list{
+  overflow: hidden;
+} */
+
+#center::-webkit-scrollbar {
+  display: none;
+  overflow-y: scroll;
+  }
+
+  html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#inputField{
+  width: 50%;
+}
+
+#btn_bg{
+  background-color:#1b6ec2;
 }

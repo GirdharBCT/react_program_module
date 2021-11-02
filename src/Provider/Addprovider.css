@@ -68,3 +68,24 @@ input[type="search"]{
   text-align: center;
   left: 50%;
 } 
+/* 
+.form-control{
+width: 70%;
+} */
+
+.col{
+  max-width: 70%;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+}
+
+#inputField{
+  width: 50%;
+}
+
+#btns{
+  margin-left: 10rem;
+
+}

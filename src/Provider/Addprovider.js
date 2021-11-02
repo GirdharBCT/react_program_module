@@ -10,7 +10,8 @@ this.state = {
 firstName:'',  
 middleName:'', 
 lastName:'', 
-hospitalId:''  
+hospitalId:'',
+errors:{}
 }  
 }   
 Addprovider=()=>{  
@@ -37,54 +38,80 @@ CancelButton=()=>{
     this.props.history.push('/Providerlist')
 }
 
+checkValidation=(e)=>{
+  let errors = {};
+  let formIsValid = true;
+  if(this.state.firstName=="")
+  {
+    errors["firstName"]="The FirstName Field is Required";
+    formIsValid=false;
+  }
+  if(this.state.lastName=="")
+  {
+    errors["lastName"]="The LastName Field is Required";
+    formIsValid=false;
+  }
+  if(this.state.middleName=="")
+  {
+    errors["middleName"]="The MiddleName Field is Required";
+    formIsValid=false;
+  }
+  if(this.state.hospitalId=="")
+  {
+    errors["HospitalId"]="The Hospital-Id Field is Required";
+    formIsValid=false;
+  }
+  this.setState({ errors: errors });
+  console.log("formIsValid=",formIsValid);
+  e.preventDefault()
+  if(formIsValid){
+    return this.Addprovider()}
 
+}
    
 handleChange= (e)=> {  
-  console.log(e.target.name,e.target.value);
+  console.log(e.target.name,e.target.value,e.target.error);
 this.setState({[e.target.name]:e.target.value});  
 }  
    
 render() {  
 return (  
    <Container className="App">  
-    <h4 className="PageHeading">Enter Provider Informations</h4>  
-    <Form className="form">  
+    <h4 className="PageHeading">Add Provider</h4>  
+    <Form className="form"  >  
     <br/>
-    {(()=>{
-      console.log("valid status",this.status);
-            if(this.json.status==400){
-              return (<div style={{align:"center"}}>*All Fields are Mandatory.</div>)
-            }
-            // else{
-            //   return ()
-            //   }
-              })}
+   
       <Col>  
-        <FormGroup row>  
-          <Label for="name" sm={2}>First Name</Label>  
-          <Col sm={10}>  
-            <Input type="text" required name="firstName" onChange={this.handleChange} defaultValue={this.state.firstName} placeholder="Enter First Name" />  
+        <FormGroup row >  
+        <Label for="name" sm={2}>First Name</Label> 
+          <Col sm={10}> 
+          
+            <Input id="inputField" type="text" name="firstName" onChange={this.handleChange} defaultValue={this.state.firstName} placeholder="Enter First Name" />  
+            <span style={{ color: "red",float:"left" }}>{this.state.errors["firstName"]}</span>
           </Col>  
         </FormGroup>  
 <br/>
         <FormGroup row>  
           <Label for="name" sm={2}>Middle Name</Label>  
           <Col sm={10}>  
-            <Input type="text" required name="middleName" onChange={this.handleChange} defaultValue={this.state.middleName} placeholder="Enter Middle Name" />  
+            <Input id="inputField" type="text" name="middleName" onChange={this.handleChange} defaultValue={this.state.middleName} placeholder="Enter Middle Name" /> 
+            <span style={{ color: "red",float:"left",fontSize:"15px" }}>{this.state.errors["middleName"]}</span> 
           </Col>  
         </FormGroup> 
         <br/>
         <FormGroup row>  
           <Label for="name" sm={2}>Last Name</Label>  
           <Col sm={10}>  
-            <Input type="text" required name="lastName" onChange={this.handleChange} defaultValue={this.state.lastName} placeholder="Enter Last Name" />  
+            <Input id="inputField" type="text" name="lastName" onChange={this.handleChange} defaultValue={this.state.lastName} placeholder="Enter Last Name" />  
+            <span style={{ color: "red",float:"left",fontSize:"15px" }}>{this.state.errors["lastName"]}</span>
           </Col>  
         </FormGroup> 
         <br/>
         <FormGroup row>  
           <Label for="address" sm={2}>hospitalId</Label>  
           <Col sm={10}>  
-            <Input type="int" required name="hospitalId" onChange={this.handleChange} defaultValue={this.state.hospitalId} placeholder="Enter hospitalId" />  
+            <Input id="inputField" type="int" name="hospitalId" onChange={this.handleChange} defaultValue={this.state.hospitalId} placeholder="Enter hospitalId" />  
+            <span style={{ color: "red",float:"left",fontSize:"15px" }}>{this.state.errors["HospitalId"]}</span>
           </Col>  
         </FormGroup>  
 
@@ -105,17 +132,15 @@ return (
       </Col>  
       <br/>
       <Col>  
-        <FormGroup row>  
-          <Col sm={5}>  
+        <FormGroup row id="btns">  
+          
+          <Col sm={1} style={{marginRight:"1.5rem"}}>  
+          <button id="btn_bg"  type="submit" onClick={this.checkValidation} className="btn btn-success">Create</button>  
           </Col>  
           <Col sm={1}>  
-          <button type="button" onClick={this.Addprovider} className="btn btn-success">Submit</button>  
+            <Button  color="danger" onClick={this.CancelButton}>Cancel</Button> 
           </Col>  
-          <Col sm={1}>  
-            <Button color="danger" onClick={this.CancelButton}>Cancel</Button> 
-          </Col>  
-          <Col sm={5}>  
-          </Col>  
+            
         </FormGroup>  
       </Col>  
 
