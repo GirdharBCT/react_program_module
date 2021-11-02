@@ -122,7 +122,7 @@ export default class Programlist extends Component {
           </div> */}
           <div class="add">
 
-    <a class="btn btn-success" ><i class="fa fa-plus" aria-hidden="true" href="/AddProgram"></i>&nbsp; Add Program</a>
+    <a class="btn btn-success" href="/AddProgram"><i class="fa fa-plus" aria-hidden="true" ></i>&nbsp; Add Program</a>
 
 </div>
 
