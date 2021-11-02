@@ -16,7 +16,7 @@ hospitalId:''
 Addprovider=()=>{  
   axios.post(baseUrl.baseUrl+'providers', {firstName:this.state.firstName,middleName:this.state.middleName,lastName:this.state.lastName,hospitalId:parseInt(this.state.hospitalId)})  
 .then(json => {  
-  console.log(json.status);  
+  console.log("json.status",json.status);  
 if(json.status===201){  
   
   // alert("Data Save Successfully");  
@@ -50,6 +50,15 @@ return (
     <h4 className="PageHeading">Enter Provider Informations</h4>  
     <Form className="form">  
     <br/>
+    {(()=>{
+      console.log("valid status",this.status);
+            if(this.json.status==400){
+              return (<div style={{align:"center"}}>*All Fields are Mandatory.</div>)
+            }
+            // else{
+            //   return ()
+            //   }
+              })}
       <Col>  
         <FormGroup row>  
           <Label for="name" sm={2}>First Name</Label>  
