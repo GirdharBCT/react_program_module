@@ -134,7 +134,7 @@ return (
       <Col>  
         <FormGroup row id="btns">  
           
-          <Col sm={1} style={{marginRight:"1.5rem"}}>  
+          <Col sm={1} style={{marginRight:"3rem"}}>  
           <button id="btn_bg"  type="submit" onClick={this.checkValidation} className="btn btn-success">Create</button>  
           </Col>  
           <Col sm={1}>  
