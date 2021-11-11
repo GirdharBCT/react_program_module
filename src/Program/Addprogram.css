@@ -47,6 +47,9 @@ tr td{
   border-right: 1px solid #c9c8c5;
 
 }
+thead{
+  background-color: #04AA7D;
+}
 /* .table{
   width: ;
 } */
@@ -96,7 +99,7 @@ td{
   .add{
     /* text-align:"end";  */
     float:right; 
-    padding-right: 60px;
+    padding-right: 50px;
     height: 10px;
     /* margin-bottom:25px; */
 
@@ -147,3 +150,4 @@ input[type="search"]{
 #btn_bg{
   background-color:#1b6ec2;
 }
+

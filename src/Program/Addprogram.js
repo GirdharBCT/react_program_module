@@ -5,13 +5,17 @@ import baseUrl from '../apiUrl.js'
 import { Container, Col, Form, Row, FormGroup, Label, Input, Button } from 'reactstrap';  
 class Addprogram extends React.Component{  
 constructor(props){  
+  // const stateCopy = Object.create(this.state);
 super(props)  
 this.state = {  
 Name:'',  
 Description:'' ,
 errors:{}  
 }  
-}   
+// let tempStatus={};
+
+}  
+
 Addprogram=()=>{  
   axios.post(baseUrl.baseUrl+'programs', {Name:this.state.Name,Description:this.state.Description})  
 .then(json => {  
@@ -20,12 +24,31 @@ if(json.status===201){
   // alert("Data Save Successfully");  
 this.props.history.push('/Programlist')  
 }  
+// else if(json.status===409){
+//   let errors = {};
+//   errors["Status"]="Program Already Exists";
+//   this.setState({ errors: errors });
+//   console.log(json.status);
+//   this.preventDefault();
+//   this.render();
+
+// }
 else{  
 alert('Data not Saved');  
 debugger;  
 this.props.history.push('/Programlist')  
 }  
-})  
+}) 
+.catch(function (error) {  
+  console.log("bijj",error);  
+  let errors = {};
+  errors["Status"]="Program Already Exists";
+  this.setState({ errors: errors });
+  console.log("inside catch",errors );
+  this.setState({Name:'',Description:''});
+  return this.render();
+  
+}.bind(this) )
 }  
    
 CancelButton=()=>{
@@ -60,10 +83,12 @@ checkValidation=(e)=>{
 render() {  
 return (  
    <Container className="App">  
-    <h4 className="PageHeading">Add Program</h4>  
+    <h4 className="PageHeading">Add Program</h4>       
+    <span style={{ color: "red",fontSize:"15px" }}>{this.state.errors["Status"]}</span>
+
     <Form className="form"  >  
-      {/* <div>{}</div> */}
       <br/>
+      
       <Col>  
         <FormGroup row>  
           <Label for="name" sm={2}>Name</Label>  
